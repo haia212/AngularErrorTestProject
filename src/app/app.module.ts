@@ -18,7 +18,7 @@ import { ConfigService } from './services/config.service';
 
 export function loadCustomHttp(backend: XHRBackend, defaultOptions: RequestOptions,
   router: Router) {
-  return new CustomHttp(backend, defaultOptions);
+  return new CustomHttp(backend, defaultOptions, router);
 }
 
 @NgModule({
@@ -37,11 +37,11 @@ export function loadCustomHttp(backend: XHRBackend, defaultOptions: RequestOptio
     fakeBackendProvider,
     MockBackend,
     BaseRequestOptions,
-    {
-      provide: Http,
-      useFactory: loadCustomHttp,
-      deps: [XHRBackend, RequestOptions] 
-    },
+    // {
+    //   provide: Http,
+    //   useFactory: loadCustomHttp,
+    //   deps: [XHRBackend, RequestOptions, Router] 
+    // },
     ConfigService,
     { 
       provide: APP_INITIALIZER, 
