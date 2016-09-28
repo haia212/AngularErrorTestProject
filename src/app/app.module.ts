@@ -10,6 +10,8 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 import { routing } from './app.routing';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { CustomHttp } from './services/custom-http';
 import { ConfigService } from './services/config.service';
 
@@ -21,7 +23,9 @@ export function loadCustomHttp(backend: XHRBackend, defaultOptions: RequestOptio
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -33,11 +37,11 @@ export function loadCustomHttp(backend: XHRBackend, defaultOptions: RequestOptio
     fakeBackendProvider,
     MockBackend,
     BaseRequestOptions,
-    // {
-    //   provide: Http,
-    //   useFactory: loadCustomHttp,
-    //   deps: [XHRBackend, RequestOptions, Router] 
-    // },
+    {
+      provide: Http,
+      useFactory: loadCustomHttp,
+      deps: [XHRBackend, RequestOptions, Router] 
+    },
     ConfigService,
     { 
       provide: APP_INITIALIZER, 
