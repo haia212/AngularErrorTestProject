@@ -8,8 +8,7 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class CustomHttp extends Http {
-  constructor(backend: ConnectionBackend, defaultOptions: RequestOptions,
-    private router: Router) {
+  constructor(backend: ConnectionBackend, defaultOptions: RequestOptions) {
     super(backend, defaultOptions);
   }
 
@@ -42,7 +41,7 @@ export class CustomHttp extends Http {
 
       //if (err.status === 401 && token && AuthStorage.isTokenExpired()) {
         //AuthStorage.clearAll();
-        this.router.navigate(['login']);
+        //this.router.navigate(['login']);
       //}
       return Observable.throw(err);
     });
